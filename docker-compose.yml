@@ -6,11 +6,11 @@
 #     - "8000:8000"
 #   environment:
 #     DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
-services: 
+services:
   django-web:
     image: ${DOCKER_USERNAME}/the-button:${TAG}
     container_name: the_button_app
     ports:
-    - "8000:8000"
-  environment:
-    DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
+      - "8000:8000"
+    environment:
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
