@@ -90,11 +90,11 @@ jobs:
         ignore-unfixed: true
         severity: 'CRITICAL,HIGH,MEDIUM'
 
-- name: Upload Trivy scan results
-  uses: actions/upload-artifact@v4
-  with:
-    name: trivy-results
-    path: trivy-results.json
+    - name: Upload Trivy scan results
+      uses: actions/upload-artifact@v4
+      with:
+        name: trivy-results
+        path: trivy-results.json
         
     - name: Test Docker image
       run: |
