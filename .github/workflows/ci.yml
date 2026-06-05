@@ -79,7 +79,15 @@ jobs:
         ignore-unfixed: true
         severity: 'CRITICAL,HIGH'
         timeout: '5m'
-    
+    - name: Run Trivy vulnerability scanner (blocking)
+      uses: aquasecurity/trivy-action@master
+      with:
+        image-ref: 'the-button:${{ github.sha }}'
+        format: 'table'
+        exit-code: '1'  # Zmiana z '0' na '1' - zatrzyma workflow przy wykryciu podatności
+        ignore-unfixed: true
+        severity: 'CRITICAL'  # Tylko krytyczne podatności będą blokować pipeline
+        timeout: '5m'
     - name: Run Trivy vulnerability scanner (JSON report)
       uses: aquasecurity/trivy-action@master
       with:
