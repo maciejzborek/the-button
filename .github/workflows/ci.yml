@@ -48,6 +48,9 @@ jobs:
   build-and-push:
     needs: test
     runs-on: ubuntu-latest
+    permissions:                  # <-- DODAJ TĘ LINIĘ
+      security-events: write      # <-- DODAJ TĘ LINIĘ
+      contents: read            
     steps:
     - name: Checkout code
       uses: actions/checkout@v4 # Zaktualizowano v3 -> v4
