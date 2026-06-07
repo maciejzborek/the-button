@@ -273,7 +273,7 @@ jobs:
         
       - name: Run smoke tests
         env:
-        APP_URL: http://${{ secrets.EC2_HOST }}:8000
+          APP_URL: http://${{ secrets.EC2_HOST }}:8000
         run: |
           echo "Running smoke tests..."
           ./.github/scripts/smoke-tests.sh $APP_URL
