@@ -169,6 +169,8 @@ jobs:
           
   release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # To daje akcji uprawnienia do tworzenia tagów i wydań
     needs: deploy-to-dev
     outputs: 
       tag: ${{ steps.versioning.outputs.new_tag }}
