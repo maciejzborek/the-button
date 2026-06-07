@@ -275,17 +275,17 @@ jobs:
         env:
         APP_URL: http://${{ secrets.EC2_HOST }}:8000
         run: |
-        echo "Running smoke tests..."
-        ./.github/scripts/smoke-tests.sh $APP_URL
+          echo "Running smoke tests..."
+          ./.github/scripts/smoke-tests.sh $APP_URL
         
       - name: Send notification on success
         if: success()
         run: |
-        echo "Deployment and tests completed successfully!"
-        curl -X POST -H "Content-Type: application/json" -d '{"status":"success","message":"Deployment and tests completed successfully!"}' ${{ secrets.WEBHOOK_URL }}
+          echo "Deployment and tests completed successfully!"
+          curl -X POST -H "Content-Type: application/json" -d '{"status":"success","message":"Deployment and tests completed successfully!"}' ${{ secrets.WEBHOOK_URL }}
         
       - name: Send alert on failure
         if: failure()
         run: |
-        echo "Smoke tests failed! Check the logs."
-        curl -X POST -H "Content-Type: application/json" -d '{"status":"failure","message":"Smoke tests failed! Check
+          echo "Smoke tests failed! Check the logs."
+          curl -X POST -H "Content-Type: application/json" -d '{"status":"failure","message":"Smoke tests failed! Check
